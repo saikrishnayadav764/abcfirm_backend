@@ -48,7 +48,9 @@ const client = new AssemblyAI({
 const store = multer.memoryStorage();
 const upload = multer({ storage: store });
 
-app.use(cors())
+app.use(cors({
+  origin: '*'
+}))
 
 app.post('/transcribe', upload.single('audioFile'), async (req, res) => {
   if (!req.file) {
